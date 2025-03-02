@@ -66,7 +66,7 @@ UEFI firmware files are available in Debian thanks to the
 Comprehensive explanation about firmware files can be found at
 [OVMF project's repository](https://github.com/tianocore/edk2/tree/master/OvmfPkg).
 
-You may also want to convert the raw image to qcow2 format
+You may also want to convert the raw image to [qcow2](https://www.qemu.org/docs/master/system/images.html#disk-image-file-formats) format
 and resize it like this:
 
 ```
