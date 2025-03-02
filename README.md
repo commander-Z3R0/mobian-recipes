@@ -58,7 +58,7 @@ The resulting files are raw images. You can start qemu like so:
 ```
 qemu-system-x86_64 -drive format=raw,file=<imagefile.img> -enable-kvm \
     -cpu host -vga virtio -m 2048 -smp cores=4 \
-    -drive if=pflash,format=raw,readonly=on,file=/usr/share/OVMF/OVMF_CODE.fd
+    -drive if=pflash,format=raw,readonly=on,file=/usr/share/OVMF/OVMF_CODE_4M.fd
 ```
 
 UEFI firmware files are available in Debian thanks to the
