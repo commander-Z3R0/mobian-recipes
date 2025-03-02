@@ -74,6 +74,24 @@ qemu-img convert -f raw -O qcow2 <raw_image.img> <qcow_image.qcow2>
 qemu-img resize -f qcow2 <qcow_image.qcow2> +20G
 ```
 
+It can be useful to be able to SSH into the QEMU image, in order to collect
+logs directly from the host system. This can be done lanching qemu like this:
+
+```
+qemu-system-x86_64 -drive format=raw,file=<imagefile.img> -enable-kvm \
+    -cpu host -vga virtio -m 2048 -smp cores=4 \
+    -drive if=pflash,format=raw,readonly=on,file=/usr/share/OVMF/OVMF_CODE_4M.fd \
+    -nic user,hostfwd=tcp::8888-:22
+```
+
+that forwards port 8888 on the host to port 22 on the guest system. Then, connection
+from the host system to the guest is as simple as
+
+```
+$ ssh mobian@localhost -p 8888
+$ sftp mobian@localhost -P 8888
+```
+
 ## Install
 
 Insert a MicroSD card into your computer, and type the following command:
