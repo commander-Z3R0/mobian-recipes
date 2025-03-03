@@ -14,3 +14,8 @@ model = "sargo"
 vendor = "google"
 model = "bonito"
 variant = "sdc"
+
+[[device]]
+vendor = "google"
+model = "bonito"
+variant = "tianma"
