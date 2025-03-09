@@ -89,7 +89,7 @@ from the host system to the guest is as simple as
 
 ```
 $ ssh mobian@localhost -p 8888
-$ sftp mobian@localhost -P 8888
+$ sftp -P 8888 mobian@localhost
 ```
 
 ## Install
