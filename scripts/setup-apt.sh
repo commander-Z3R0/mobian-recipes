@@ -9,8 +9,8 @@ if [ "${NONFREE}" = "true" ]; then
     COMPONENTS="${COMPONENTS} non-free-firmware"
 fi
 
-# Add debian-security for bullseye & bookworm; note that only the main component is supported
-if [ "$DEBIAN_SUITE" = "bullseye" ] || [ "$DEBIAN_SUITE" = "bookworm" ]; then
+# Add debian-security for stable releases; note that only the main component is supported
+if [ "${DEBIAN_SUITE}" = "bullseye" ] || [ "${DEBIAN_SUITE}" = "bookworm" ] || [ "${DEBIAN_SUITE}" = "trixie" ]; then
     echo "deb http://security.debian.org/ ${DEBIAN_SUITE}-security main" >> /etc/apt/sources.list
 fi
 
