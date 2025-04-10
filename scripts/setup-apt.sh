@@ -2,20 +2,21 @@
 
 DEBIAN_SUITE=$1
 SUITE=$2
-CONTRIB=$3
-NONFREE=$4
+NONFREE=$3
 
 COMPONENTS="main"
-[ "$CONTRIB" = "true" ] && COMPONENTS="$COMPONENTS contrib"
-[ "$NONFREE" = "true" ] && COMPONENTS="$COMPONENTS non-free"
+if [ "${NONFREE}" = "true" ]; then
+    COMPONENTS="${COMPONENTS} non-free-firmware"
+fi
 
 # Add debian-security for bullseye & bookworm; note that only the main component is supported
 if [ "$DEBIAN_SUITE" = "bullseye" ] || [ "$DEBIAN_SUITE" = "bookworm" ]; then
-    echo "deb http://security.debian.org/ $DEBIAN_SUITE-security $COMPONENTS" >> /etc/apt/sources.list
+    echo "deb http://security.debian.org/ ${DEBIAN_SUITE}-security main" >> /etc/apt/sources.list
 fi
 
-# Set the proper suite in our sources file
+# Set the proper suite and components in our sources file
 sed -i -e "s/Suites: .*/Suites: ${SUITE}/" \
+       -e "s/Components: .*/Components: ${COMPONENTS}/" \
           /etc/apt/sources.list.d/mobian.sources
 
 # Setup repo priorities so mobian comes first

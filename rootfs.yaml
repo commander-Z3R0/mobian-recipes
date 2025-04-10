@@ -43,7 +43,7 @@ actions:
   - action: run
     description: Setup Mobian repository
     chroot: true
-    script: scripts/setup-apt.sh {{ $debian_suite }} {{ $suite }} {{ $contrib }} {{ $nonfree }}
+    script: scripts/setup-apt.sh {{ $debian_suite }} {{ $suite }} {{ $nonfree }}
 
   - action: recipe
     recipe: include/packages-base.yaml
