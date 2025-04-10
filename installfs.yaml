@@ -18,15 +18,12 @@ actions:
     mirror: {{ $mirror }}
     variant: minbase
 
-  - action: run
+  - action: apt
     description: Install mobian-archive-keyring
-    chroot: true
-    command: apt-get -y install mobian-archive-keyring
-
-  - action: overlay
-    description: Enable Mobian repository
-    source: overlays/apt/
-    destination: /etc/apt/
+    recommends: false
+    packages:
+      - ca-certificates
+      - mobian-archive-keyring
 
   - action: run
     description: Setup Mobian repository

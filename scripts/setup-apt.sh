@@ -14,8 +14,9 @@ if [ "$DEBIAN_SUITE" = "bullseye" ] || [ "$DEBIAN_SUITE" = "bookworm" ]; then
     echo "deb http://security.debian.org/ $DEBIAN_SUITE-security $COMPONENTS" >> /etc/apt/sources.list
 fi
 
-# Set the proper suite in our sources.list
-sed -i "s/@@SUITE@@/${SUITE}/" /etc/apt/sources.list.d/mobian.list
+# Set the proper suite in our sources file
+sed -i -e "s/Suites: .*/Suites: ${SUITE}/" \
+          /etc/apt/sources.list.d/mobian.sources
 
 # Setup repo priorities so mobian comes first
 cat > /etc/apt/preferences.d/00-mobian-priority << EOF

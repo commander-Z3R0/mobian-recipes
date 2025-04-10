@@ -32,12 +32,8 @@ actions:
     description: Install mobian-archive-keyring
     recommends: false
     packages:
+      - ca-certificates
       - mobian-archive-keyring
-
-  - action: overlay
-    description: Enable Mobian repository
-    source: overlays/apt/
-    destination: /etc/apt/
 
   - action: overlay
     description: Enable resize of root partition
