@@ -28,7 +28,7 @@ actions:
   - action: run
     description: Setup Mobian repository
     chroot: true
-    script: scripts/setup-apt.sh {{ $debian_suite }} {{ $suite }} false
+    script: scripts/setup-apt.sh {{ $debian_suite }} {{ $suite }}
 
   - action: apt
     recommends: false

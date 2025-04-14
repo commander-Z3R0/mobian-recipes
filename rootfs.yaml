@@ -43,7 +43,14 @@ actions:
   - action: run
     description: Setup Mobian repository
     chroot: true
-    script: scripts/setup-apt.sh {{ $debian_suite }} {{ $suite }} {{ $nonfree }}
+    script: scripts/setup-apt.sh {{ $debian_suite }} {{ $suite }}
+
+{{ if eq $nonfree "true" }}
+  - action: run
+    description: Enable non-free-firmware repos
+    chroot: true
+    script: scripts/setup-apt-nonfree.sh true
+{{ end }}
 
   - action: recipe
     recipe: include/packages-base.yaml
