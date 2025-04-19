@@ -53,6 +53,10 @@ You can use `./build.sh -d` to use the docker version of `debos`.
 
 You can build a QEMU x86_64 image by adding the `-t amd64` flag to `build.sh`
 
+### Running QEMU image
+
+#### From commandline
+
 The resulting files are raw images. You can start qemu like so:
 
 ```
@@ -66,13 +70,6 @@ UEFI firmware files are available in Debian thanks to the
 Comprehensive explanation about firmware files can be found at
 [OVMF project's repository](https://github.com/tianocore/edk2/tree/master/OvmfPkg).
 
-You may also want to convert the raw image to [qcow2](https://www.qemu.org/docs/master/system/images.html#disk-image-file-formats) format
-and resize it like this:
-
-```
-qemu-img convert -f raw -O qcow2 <raw_image.img> <qcow_image.qcow2>
-qemu-img resize -f qcow2 <qcow_image.qcow2> +20G
-```
 
 It can be useful to be able to SSH into the QEMU image, in order to collect
 logs directly from the host system. This can be done lanching qemu like this:
@@ -90,6 +87,29 @@ from the host system to the guest is as simple as
 ```
 $ ssh mobian@localhost -p 8888
 $ sftp -P 8888 mobian@localhost
+```
+
+#### Using virt-manager
+
+You may want to run the image under [virt-manager](https://packages.debian.org/stable/virt-manager)
+for easier access to USB redirection and keyboard controls. 
+
+To create a VM for mobian image on x86_64, launch virt-manager, click `New VM` -> 
+`Import existing disk image` -> select the raw image and OS version then progress to the 
+`Ready to begin installation` page, check `customize configuration before install` then click finish.
+
+Under `Hypervisor Details`, change firmware to `UEFI x86_64: /usr/share/OVMF/OVMF_CODE_4M.fd` then `apply` and `begin installation`, 
+the image should now boot up.
+
+
+#### Convert and resize disk image
+
+You may also want to convert the raw image to [qcow2](https://www.qemu.org/docs/master/system/images.html#disk-image-file-formats) format
+and resize it like this:
+
+```
+qemu-img convert -f raw -O qcow2 <raw_image.img> <qcow_image.qcow2>
+qemu-img resize -f qcow2 <qcow_image.qcow2> +20G
 ```
 
 ## Install
