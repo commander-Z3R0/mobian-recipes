@@ -1,7 +1,8 @@
 name: Sync from GitLab
 on:
   schedule:
-    - cron: '0 0 * * *'  # Ejecutar cada día a medianoche
+    - cron: '0 0 * * *' 
+  workflow_dispatch:    
 jobs:
   sync:
     runs-on: ubuntu-latest
