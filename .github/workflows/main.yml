@@ -1,14 +1,29 @@
-name: Sync from GitLab
+name: Sync Mobian from GitLab
 on:
   schedule:
-    - cron: '0 0 * * *' 
+    - cron: '0 0 * * *'
   workflow_dispatch:    
 jobs:
   sync:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - run: |
-        git remote add upstream https://salsa.debian.org/Mobian-team/mobian-recipes.git
-        git pull upstream master
-        git push origin master
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  
+
+      - name: Configurar usuario de Git
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Añadir upstream
+        run: |
+          git remote add upstream https://salsa.debian.org/Mobian-team/mobian-recipes.git
+
+      - name: Sincronizar rama master
+        run: |
+          git fetch upstream master
+          git checkout master
+          # Solo hace fast-forward, fallará si hay commits locales
+          git merge --ff-only upstream/master
+          git push origin master
