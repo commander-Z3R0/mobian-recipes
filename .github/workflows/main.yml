@@ -1,0 +1,13 @@
+name: Sync from GitLab
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Ejecutar cada día a medianoche
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - run: |
+        git remote add upstream https://salsa.debian.org/Mobian-team/mobian-recipes.git
+        git pull upstream master
+        git push origin master
