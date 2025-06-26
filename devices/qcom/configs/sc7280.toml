@@ -1,3 +1,5 @@
+chipset = "qcm6490"
+
 [bootimg]
 version = 2
 base = 0x0
@@ -11,4 +13,7 @@ pagesize = 4096
 [[device]]
 vendor = "fairphone"
 model = "fp5"
-chipset = "qcm6490"
+
+[[device]]
+vendor = "shift"
+model = "otter"
