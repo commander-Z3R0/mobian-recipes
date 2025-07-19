@@ -30,7 +30,6 @@
   variables:
     MOBIAN_DEVICE_FAMILY: "librem5"
     MOBIAN_DEVICE_NAME: "librem5"
-    MOBIAN_BOOT_PARTITION_START: "8MiB"
   rules: *job_rules
 
 .device-qcom:
