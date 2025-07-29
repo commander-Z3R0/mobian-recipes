@@ -15,6 +15,7 @@ actions:
       - ktrip
       - neochat
       - phrog
+      - plasma-discover
       - qmlkonsole
       - tokodon
       - webext-ublock-origin-firefox
