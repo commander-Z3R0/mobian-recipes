@@ -151,6 +151,11 @@ fi
 [ "${zram}" ] && ARGS="${ARGS} -t zram:true"
 [ "${crypt_root}" ] && ARGS="${ARGS} -t crypt_root:true"
 
+if [ -n "${ssh}" ] && [ ! -f overlays/ssh/authorized_keys ]; then
+    echo "ssh selected but no authorized keys file, this won't end well"
+    exit 1
+fi
+
 ARGS="${ARGS} -t architecture:${arch} -t family:${family} -t device:${device} \
             -t partitiontable:${partitiontable} -t filesystem:${filesystem} \
             -t image:${image_file} -t rootfs:${rootfs_file} -t installfs:${installfs_file} \
