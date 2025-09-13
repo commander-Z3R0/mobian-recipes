@@ -13,6 +13,9 @@ actions:
     recommends: false
     description: Install device-specific base packages
     packages:
+      - gstreamer1.0-plugins-base-apps
+      - libcamera-ipa
+      - libspa-0.2-libcamera
       - yq
 {{- if ne $device "wip" }}
       - {{ $device }}-support

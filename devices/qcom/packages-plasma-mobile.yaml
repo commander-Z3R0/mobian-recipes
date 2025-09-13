@@ -8,5 +8,6 @@ actions:
     recommends: false
     description: Install device-specific packages for Plasma Mobile
     packages:
+      - gnome-snapshot
       - mobian-plasma-mobile-phone
       - firefox-esr-mobile-config
