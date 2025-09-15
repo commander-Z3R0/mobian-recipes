@@ -8,5 +8,6 @@ actions:
     recommends: false
     description: Install device-specific packages for Phosh
     packages:
+      - gnome-snapshot
       - firefox-esr-mobile-config
       - mobian-phosh-phone
