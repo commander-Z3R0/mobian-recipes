@@ -38,7 +38,6 @@
     - .arch-arm64
   variables:
     MOBIAN_DEVICE_FAMILY: "qcom"
-    MOBIAN_DEVICE_NAME: "qcom"
   before_script:
     # Replicate the default before_script as we can't otherwise include it
     - chmod 0400 "$MOBIAN_CI_SSH_KEY"
@@ -54,17 +53,29 @@
     - MOBIAN_EXTRA_DEBOS_ARGS="-e MKE2FS_DEVICE_SECTSIZE:${SECTSIZE} -t bootonroot:true"
   rules: *job_rules
 
+.device-sc7280:
+  extends:
+    - .device-qcom
+  variables:
+    MOBIAN_DEVICE_NAME: "sc7280"
+
 .device-sdm670:
   extends:
     - .device-qcom
   variables:
     MOBIAN_DEVICE_NAME: "sdm670"
 
-.device-sc7280:
+.device-sdm845:
   extends:
     - .device-qcom
   variables:
-    MOBIAN_DEVICE_NAME: "sc7280"
+    MOBIAN_DEVICE_NAME: "sdm845"
+
+.device-sm6350:
+  extends:
+    - .device-qcom
+  variables:
+    MOBIAN_DEVICE_NAME: "sm6350"
 
 .device-amd64:
   extends:

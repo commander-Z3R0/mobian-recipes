@@ -9,3 +9,4 @@ pagesize = 4096
 [[device]]
 vendor = "fairphone"
 model = "fp4"
+chipset = "sm7225"
