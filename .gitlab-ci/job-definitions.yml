@@ -46,7 +46,7 @@ cleanup-artifacts-dir:
   if [ -f "${MOBIAN_GPG_KEY}" ]; then
     if [ -z "${SIGN_FILE}" ]; then SIGN_FILE="${IMAGE_NAME}.sha256sums"; fi
     gpg --import "${MOBIAN_GPG_KEY}"
-    gpg -u "admin@mobian-project.org" --detach-sign ${SIGN_FILE}
+    gpg -u "admin+images@mobian.org" --detach-sign ${SIGN_FILE}
   fi
 
 .rootfs-generic:
