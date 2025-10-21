@@ -20,7 +20,7 @@ cleanup-artifacts-dir:
 
 .upload-images: &upload-images |
   if [ "${CI_PIPELINE_SOURCE}" = "schedule" ]; then
-    IMAGES_DIR=${IMAGES_ROOT}/${MOBIAN_DEVICE_NAME}/${IMAGES_UPLOAD_SUBDIR}/weekly
+    IMAGES_DIR=${IMAGES_ROOT}/${MOBIAN_DEVICE_FAMILY}/${IMAGES_UPLOAD_SUBDIR}/weekly
     SSH_USER=builder
   else
     IMAGES_DIR=${IMAGES_CI_ROOT}/$(date --date="${CI_PIPELINE_CREATED_AT}" +%Y%m%d.%H%M)
