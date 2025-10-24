@@ -1,22 +1,10 @@
 {{- $architecture := or .architecture "arm64" -}}
 {{- $device := or .device "librem5" }}
-{{- $bootstart := or .bootstart "1MiB" }}
 
 architecture: {{ $architecture }}
 
 actions:
   - action: run
-    description: Download bootloader
+    description: Ensure we have a valid extlinux.conf
     chroot: true
-    script: bootloader.sh {{ $bootstart }}
-
-  - action: raw
-    description: Install bootloader
-    origin: filesystem
-    source: u-boot-librem5.imx
-    offset: {{ sector 66 }}
-
-  - action: run
-    description: Cleanup temporary binaries
-    chroot: true
-    command: rm /u-boot-librem5.imx
+    command: /etc/kernel/postinst.d/zz-u-boot-menu "$(linux-version list | tail -1)"
