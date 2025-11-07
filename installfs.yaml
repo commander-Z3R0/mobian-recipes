@@ -41,7 +41,6 @@ actions:
       - plymouth-theme-mobian
       - squashfs-tools-ng
       - u-boot-tools
-      - wget
 
   - action: run
     description: Set up system
