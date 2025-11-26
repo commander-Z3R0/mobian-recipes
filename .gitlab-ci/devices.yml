@@ -76,6 +76,12 @@
   variables:
     MOBIAN_DEVICE_NAME: "sm6350"
 
+.device-sm7150:
+  extends:
+    - .device-qcom
+  variables:
+    MOBIAN_DEVICE_NAME: "sm7150"
+
 .device-amd64:
   extends:
     - .arch-amd64
