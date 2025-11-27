@@ -17,3 +17,8 @@ model = "fp5"
 [[device]]
 vendor = "shift"
 model = "otter"
+
+# [[device]]
+# vendor = "nothing"
+# model = "spacewar"
+# chipset = "sm7325"
