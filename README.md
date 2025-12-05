@@ -26,9 +26,6 @@ sudo apt install android-sdk-libsparse-utils yq mkbootimg
 Building with disk encryption support will also require the package `cryptsetup` to be installed
 on your host.
 
-Do note that we recommend using Debian 12 (Bookworm) as previous versions didn't
-include the `yq` package.
-
 Similarly, if you want to use F2FS for the root filesystem (which isn't such a
 good idea, as it has been known to cause corruption in the past), you'll need to
 install `f2fs-tools` as well.
